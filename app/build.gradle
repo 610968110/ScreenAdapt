@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+def rooter = rootProject.ext
+android {
+    compileSdkVersion rooter.compileSdkVersion
+    defaultConfig {
+        applicationId "com.lbx.screenadapterdemo"
+        minSdkVersion rooter.minSdkVersion
+        targetSdkVersion rooter.targetSdkVersion
+        versionCode rooter.versionCode
+        versionName rooter.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:${rooter.appcompatVersion}"
+    testImplementation 'junit:junit:4.12'
+    implementation project(':screenadapter')
+//    implementation 'com.lbx:screenadapter:1.0.0'
+}
+
+
